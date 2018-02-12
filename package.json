@@ -5,15 +5,18 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server":"nodemon server/server.js"
+    "server": "nodemon server/server.js",
+    "deploy": "heroku create"
   },
   "engines": {
-    "node":"6.9.4"
+    "node": "6.9.4"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.2",
-    "nodemon": "^1.14.12"
+    "heroku": "^0.2.0",
+    "nodemon": "^1.14.12",
+    "socket.io": "^2.0.4"
   }
 }
