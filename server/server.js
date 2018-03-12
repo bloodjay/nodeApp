@@ -3,7 +3,7 @@ const express = require('express');
 const socketIO = require('socket.io');
 const http = require('http');
 
-const {generateMes} = require('./util/message')
+const {generateMes,generateLocationMes} = require('./util/message')
 const publicPath = path.join(__dirname,'../public');
 const port = process.env.PORT || 3000;
 var app = express();
@@ -15,10 +15,10 @@ app.use(express.static(publicPath));
 io.on('connection',(socket) => {
     console.log('user connecting');
 
-    socket.emit('newMessage',{
-        from:'Admin',
-        text:'Weclcome to the chat app'
-    })
+    // socket.emit('newMessage',{
+    //     from:'Admin',
+    //     text:'Weclcome to the chat app'
+    // })
 
     socket.emit('newMessage',generateMes('Admin','Weclcome to chat app'))
 
@@ -34,6 +34,10 @@ io.on('connection',(socket) => {
         //     createAt: new Date()
         // })
     })
+
+    socket.on('createLocationMessage',(coords)=>{
+        io.emit('newLocationMessage',generateLocationMes('Admin',coords.latitude,coords.longitude))
+    });
 
 
     socket.on('disconnect',() => {

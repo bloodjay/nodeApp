@@ -6,4 +6,12 @@ var generateMes = (from,text) => {
     }
 }
 
-module.exports = {generateMes};
+var generateLocationMes = (from,latitude,longitude) => {
+    return{
+        from,
+        url:'https://www.google.com/maps/place/'+latitude+','+longitude,
+        createAt: new Date().getTime()
+    };
+}
+
+module.exports = {generateMes,generateLocationMes};
