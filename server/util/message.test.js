@@ -18,11 +18,12 @@ describe('createLocationMessage',() => {
         var from = 'Jena';
         var latitute = 15;
         var longitute = 19;
+        var createAt = 1521492846512;
         var url = 'https://www.google.com/maps/place/'+latitute+','+longitute;
         var text = 'Some message';
         var message = generateLocationMes(from,latitute,longitute);
 
         expect(typeof(message.createAt)).toBe('number');
-        expect(message).toBe({from,url});
+        expect(message).toBe({from,url,createAt});
     })
 })
